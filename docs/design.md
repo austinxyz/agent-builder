@@ -63,10 +63,12 @@ ai_agent/
 
 ### `/agent-define`
 引导序列：领域 → 英雄 → 3个痛点 → 选种子 → WHO/WHEN/WHAT/DONE-WHEN  
+英雄描述完成后，用**三层穿梭**检验质量（现象层/本质层/哲学层），缺层则追问补齐  
 输出：`agent-script.md` 第零部分
 
 ### `/agent-system-prompt`
 读取定义区块 → 引导写 5 件套：身份/服务对象/核心任务/铁律/Disclaimer  
+件套①身份：英雄视角部分必须按**三层穿梭**结构写（现象→本质→哲学）  
 输出：`agent-script.md` 第一部分
 
 ### `/agent-dialogue`
@@ -218,3 +220,7 @@ Antigravity 可直接读写文件，输出写入 `agents/[名称]/agent-script.m
 **2026-06-16：** `/agent-dialogue` 和 `.agents/skills/agent-dialogue/SKILL.md` 补充"对话里嵌工具（代码/模板）"章节。
 
 背景：原 agent Step 5 嵌了可执行 Python 代码（walk-forward 模板），是专业度核心体现。旧 skill 只引导对话结构，不引导工具嵌入。新章节强制追问"用户需要自己计算吗？如果是，把工具直接递给他"，解决这个 gap。
+
+**2026-06-18：** `/agent-define` 和 `/agent-system-prompt`（含 Antigravity 版）补充**三层穿梭**模型。
+
+背景：学员写英雄 Role 时最常犯的错是只写头衔和鸡汤，缺现象层（真实成就）和本质层（独家思维方式）。三层穿梭（现象→本质→哲学）来自课程 S2 作业指南，评分占 10%。`agent-define` 在问题 2 收到英雄描述后自动做三层检验并追问补齐；`agent-system-prompt` 件套①引导时给出三层结构模板。
