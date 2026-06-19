@@ -15,17 +15,18 @@
 
 ### 方式 A：Claude Code（付费）
 
-**第一步：安装 skills**
+**第一步：克隆此仓库**
 
 ```bash
-# 克隆此仓库到你的工作目录
 git clone https://github.com/austinxyz/agent-builder.git
 cd agent-builder
 ```
 
-或者把 `skills/` 目录复制到你已有项目的根目录。
+**第二步：用 Claude Code 打开此目录**
 
-**第二步：开始构建**
+`.claude/commands/` 目录包含所有 `/agent-*` slash commands，克隆后立即可用，无需额外安装。
+
+**第三步：开始构建**
 
 在 Claude Code 对话框输入：
 
@@ -33,7 +34,7 @@ cd agent-builder
 /agent-builder
 ```
 
-Claude Code 自动发现 `skills/` 目录下的所有 skills，显示 5 步进度，引导你逐步完成。
+显示 5 步进度，引导你逐步完成。
 
 ---
 

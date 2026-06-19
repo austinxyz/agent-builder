@@ -21,8 +21,8 @@
 - 5 个独立 sub-skills，可单独调用，不依赖顺序
 
 **适配平台：两个**
-- Claude Code（付费）：主力版，`/skill-name` 调用，读写文件
-- Google Antigravity（免费）：每个 skill 底部附独立 prompt，粘贴到 Project Instructions 即用。支持 Claude 模型，可读写文件，无需信用卡。
+- Claude Code（付费）：主力版，`.claude/commands/` 提供 `/agent-*` slash commands，clone 后即用，读写文件
+- Google Antigravity（免费）：`.agents/skills/` 目录自动发现，`use agent-* skill` 调用，支持 Claude 模型，可读写文件，无需信用卡
 
 注：ChatGPT + Codex 已于 2026-05-16 合并，重度用户走 Claude Code，免费用户走 Antigravity。
 
@@ -31,17 +31,33 @@
 ## 文件结构
 
 ```
-ai_agent/
-├── skills/
-│   ├── agent-builder.md        # 主入口
-│   ├── agent-define.md         # 定义阶段
-│   ├── agent-system-prompt.md  # 写系统提示词
-│   ├── agent-dialogue.md       # 对话剧本
-│   ├── agent-polish.md         # 打磨
-│   └── agent-kb.md             # 知识库生成
-└── docs/superpowers/specs/
-    └── 2026-06-16-agent-builder-skills-design.md
+agent-builder/
+├── CLAUDE.md                        # 自动加载所有 skills（@引用）
+├── .claude/
+│   └── commands/
+│       ├── agent-builder.md         # /agent-builder slash command
+│       ├── agent-define.md          # /agent-define
+│       ├── agent-system-prompt.md   # /agent-system-prompt
+│       ├── agent-dialogue.md        # /agent-dialogue
+│       ├── agent-kb.md              # /agent-kb
+│       └── agent-polish.md          # /agent-polish
+├── skills/                          # 实际内容（commands/ 指向这里）
+│   ├── agent-builder.md
+│   ├── agent-define.md
+│   ├── agent-system-prompt.md
+│   ├── agent-dialogue.md
+│   ├── agent-polish.md
+│   └── agent-kb.md
+└── .agents/skills/                  # Antigravity 版（SKILL.md 格式）
+    ├── agent-builder/SKILL.md
+    ├── agent-define/SKILL.md
+    ├── agent-system-prompt/SKILL.md
+    ├── agent-dialogue/SKILL.md
+    ├── agent-polish/SKILL.md
+    └── agent-kb/SKILL.md
 ```
+
+**设计原则：** skill 内容只维护一份（`skills/*.md`），`.claude/commands/` 里的文件只是薄壳，指向 `skills/` 里的内容。避免重复。
 
 **学员输出目录（每个 agent）：**
 ```
