@@ -99,6 +99,11 @@ agent-builder/
 扫描 KB 引用清单 → 逐条引导提供原始内容 → 格式化  
 输出：`knowledge-base/0N_xxx.md`
 
+### `/agent-publish`
+读取 agent-script.md → 生成平台发布信息（名称/描述/开场第一句）→ 发布检查清单 → 生成社区帖子文案  
+发布目标：WukongDojo.ai（System Prompt = 第一部分 + 第二部分；KB = knowledge-base/ 全部文件）  
+输出：社区帖子草稿 + 发布链接确认
+
 ---
 
 ## `agent-script.md` 输出格式

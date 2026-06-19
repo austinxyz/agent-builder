@@ -58,9 +58,14 @@ description: 引导用户把 agent-script.md 发布到 WukongDojo.ai，生成平
 
 ## 第二步：System Prompt 来源确认
 
-> "WukongDojo 的剧本（System Prompt）直接用 `agent-script.md` 第一部分的全部内容。
-> 
-> 复制范围：从 `### ① 身份` 到 `### ⑤ Disclaimer` 全部内容。
+> "WukongDojo 的剧本（System Prompt）= `agent-script.md` 第一部分 + 第二部分。
+>
+> 复制范围：
+> - 第一部分：`### ① 身份` 到 `### ⑤ Disclaimer`
+> - 第二部分：`### Step 1` 到最后一个 Step 全部内容
+>
+> 不用贴：第零部分（核心定义，给人看的）、第三部分（KB清单，给人看的）、打磨日志
+>
 > 知识库文件上传 `knowledge-base/` 下的所有 `.md` 文件。"
 
 列出知识库文件清单：
@@ -84,7 +89,7 @@ description: 引导用户把 agent-script.md 发布到 WukongDojo.ai，生成平
 □ 智能体名称：[生成的名称]
 □ 语言：中文（创建后无法修改，确认后再填）
 □ 简短描述：[生成的描述]
-□ 剧本（System Prompt）：粘贴 agent-script.md 第一部分全文
+□ 剧本（System Prompt）：粘贴 agent-script.md 第一部分 + 第二部分全文
 □ 知识（Knowledge Base）：上传 knowledge-base/ 下所有 .md 文件
 □ 模型：推荐 Nemotron Super 120B（免费起步）
 □ 点「保存智能体」

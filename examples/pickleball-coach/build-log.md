@@ -1,19 +1,25 @@
 # 皮克球成长教练 · Build Log
 
 **开始日期：** 2026-06-19  
-**状态：** 进行中（定义阶段）
+**完成日期：** 2026-06-19  
+**状态：** 已发布 ✅
 
 ---
 
 ## 进度
 
 ```
-第0步 定义        [🔄]  /agent-define
-第1步 剧本        [⬜]  /agent-system-prompt
-第2步 对话        [⬜]  /agent-dialogue
-第3步 知识库      [⬜]  /agent-kb
-第4步 打磨        [⬜]  /agent-polish
+第0步 定义        [✅]  /agent-define
+第1步 剧本        [✅]  /agent-system-prompt
+第2步 对话        [✅]  /agent-dialogue
+第3步 知识库      [✅]  /agent-kb
+第4步 打磨        [✅]  /agent-polish       v0.1 → v0.3（2轮打磨）
+第5步 发布        [✅]  /agent-publish      WukongDojo 已上线
 ```
+
+**发布链接：** https://www.wukongdojo.ai/zh/agents/R-qCaN23UXddZGCW604bBw/run  
+**当前版本：** v0.3  
+**已知待修复：** Step 3 训练数字（70%/50球/20回合）agent 自己定，用户未确认——下轮打磨处理
 
 ---
 
@@ -110,7 +116,13 @@
 - [x] 写入 agent-script.md 第零部分
 - [x] /agent-system-prompt — 写 5 件套 System Prompt
 - [x] /agent-dialogue — 写对话剧本（5步：评估→目标→训练计划→资源匹配→赛事/复盘）
-- [x] /agent-kb — 建知识库（8个文件：段位/drill/装备/教练/场地/赛事/教程/湾区专区）
+- [x] /agent-kb — 建知识库（7个文件：段位/drill/装备/教练/场地/赛事/教程）
   - 独家资源①：《学打匹克球》中文教程 → KB07（https://tinyurl.com/learningpickleball）
   - 独家资源②：湾区场地数据库 → KB05湾区专区（https://tinyurl.com/pickleballcourt）
-- [ ] /agent-polish — 打磨
+- [x] /agent-polish — 打磨（2轮）
+  - test-run-01.md：完整测试对话，DONE-WHEN 达成
+  - v0.1→v0.2：Step 1 短板追问无上限 → 加2轮限制 + 保守申报机制
+  - v0.2→v0.3：Step 1 失误类型追问无关闭准则 → 两阶段关闭，单轮上限
+- [x] /agent-publish — 发布到 WukongDojo.ai
+  - 发布链接：https://www.wukongdojo.ai/zh/agents/R-qCaN23UXddZGCW604bBw/run
+  - 社区帖子文案已生成
