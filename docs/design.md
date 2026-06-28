@@ -40,21 +40,24 @@ agent-builder/
 │       ├── agent-system-prompt.md   # /agent-system-prompt
 │       ├── agent-dialogue.md        # /agent-dialogue
 │       ├── agent-kb.md              # /agent-kb
-│       └── agent-polish.md          # /agent-polish
+│       ├── agent-polish.md          # /agent-polish
+│       └── agent-upgrade.md         # /agent-upgrade
 ├── skills/                          # 实际内容（commands/ 指向这里）
 │   ├── agent-builder.md
 │   ├── agent-define.md
 │   ├── agent-system-prompt.md
 │   ├── agent-dialogue.md
 │   ├── agent-polish.md
-│   └── agent-kb.md
+│   ├── agent-kb.md
+│   └── agent-upgrade.md             # 升级已有 agent 添加平台能力
 └── .agents/skills/                  # Antigravity 版（SKILL.md 格式）
     ├── agent-builder/SKILL.md
     ├── agent-define/SKILL.md
     ├── agent-system-prompt/SKILL.md
     ├── agent-dialogue/SKILL.md
     ├── agent-polish/SKILL.md
-    └── agent-kb/SKILL.md
+    ├── agent-kb/SKILL.md
+    └── agent-upgrade/SKILL.md
 ```
 
 **设计原则：** skill 内容只维护一份（`skills/*.md`），`.claude/commands/` 里的文件只是薄壳，指向 `skills/` 里的内容。避免重复。
@@ -104,6 +107,11 @@ agent-builder/
 发布目标：WukongDojo.ai（System Prompt = 第一部分 + 第二部分；KB = knowledge-base/ 全部文件）  
 输出：社区帖子草稿 + 发布链接确认
 
+### `/agent-upgrade`
+读取已有 agent-script.md → 展示当前状态 → 选择要加的能力 → 输出改动范围清单 → 逐项引导补写  
+每完成一项版本号 +0.1；更新第零部分B；建议 polish + 重新发布  
+输出：更新的 agent-script.md（新增/更新第零部分B、第四部分，及对应 Step 内容）
+
 ---
 
 ## `agent-script.md` 输出格式
@@ -117,12 +125,37 @@ agent-builder/
 
 ---
 
+## 第零部分  · 核心定义（现有）
+## 第零部分B · 平台能力设计（新增，仅选了能力时生成）
+## 第一部分  · System Prompt（现有）
+## 第二部分  · 对话剧本（现有，新增步骤类型）
+## 第三部分  · 知识库引用清单（现有）
+## 第四部分  · 记忆设计（新增，记忆型 agent 专属）
+## 打磨日志  （现有）
+```
+
+完整展开示例：
+
+```markdown
 ## 第零部分 · 核心定义
 
 **WHO：** ...
 **WHEN：** ...
 **WHAT：** ...
 **DONE-WHEN：** ...
+
+---
+
+## 第零部分B · 平台能力设计
+> 由 /agent-define 或 /agent-upgrade 生成
+
+**会话模式：** 单次 / 多次（记忆型）
+
+**选用能力：**
+- 🎤 语音输入（如选）
+- 📎 文件上传：用户上传 [X]，agent 提取 [Y]（如选）
+- 📄 文件输出：输出 [文件名]，包含 [内容]（如选）
+- 🧠 超强记忆：记忆槽详见第四部分（如选）
 
 ---
 
@@ -152,6 +185,18 @@ agent-builder/
 
 | Step | 文件 | 用途 |
 |------|------|------|
+
+---
+
+## 第四部分 · 记忆设计
+> 由 /agent-dialogue 或 /agent-upgrade 生成（记忆型 agent 专属）
+
+**记忆槽：**
+| 字段 | 写入时机 | 读取时机 | 遗忘策略 |
+|------|---------|---------|---------|
+
+**会话开始协议：** ...
+**记忆更新步骤：** ...
 
 ---
 
@@ -245,3 +290,10 @@ Antigravity 可直接读写文件，输出写入 `agents/[名称]/agent-script.m
 **2026-06-18：** `/agent-define` 和 `/agent-system-prompt`（含 Antigravity 版）补充**三层穿梭**模型。
 
 背景：学员写英雄 Role 时最常犯的错是只写头衔和鸡汤，缺现象层（真实成就）和本质层（独家思维方式）。三层穿梭（现象→本质→哲学）来自课程 S2 作业指南，评分占 10%。`agent-define` 在问题 2 收到英雄描述后自动做三层检验并追问补齐；`agent-system-prompt` 件套①引导时给出三层结构模板。
+
+**2026-06-27：** 平台能力扩展设计（v2）。
+新增 Q0（会话模式）、Q7.5（能力选择）到 `/agent-define`；
+新增 📎/🧠/🎤 步骤类型到 `/agent-dialogue`；
+新建 `/agent-upgrade` skill；
+更新 `/agent-publish` 能力配置清单；
+设计文档：`docs/superpowers/specs/2026-06-27-platform-capabilities-design.md`
