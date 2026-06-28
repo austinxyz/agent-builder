@@ -296,7 +296,7 @@ agent：[守边界的回应，不争论，不退让，引用铁律]
 ---
 
 ## 第四部分 · 记忆设计
-> 由 /agent-dialogue 生成（记忆型 agent 专属）
+> 由 /agent-dialogue 生成（记忆型 agent 专属）；/agent-upgrade 亦可写入此部分
 
 ### 记忆槽
 | 字段名 | 类型 | 写入时机 | 读取时机 |
