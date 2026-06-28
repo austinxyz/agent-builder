@@ -18,11 +18,13 @@ description: Agent 构建主入口。显示进度，路由到对应 sub-skill。
 ```
 🤖 Agent Builder 进度
 ━━━━━━━━━━━━━━━━━━━━━━
-第0步 定义   [✅/🔄/⬜]  /agent-define
-第1步 剧本   [✅/🔄/⬜]  /agent-system-prompt
-第2步 对话   [✅/🔄/⬜]  /agent-dialogue
-第3步 知识库 [✅/🔄/⬜]  /agent-kb
-第4步 打磨   [✅/🔄/⬜]  /agent-polish
+第0步 定义     [✅/🔄/⬜]  /agent-define
+第1步 剧本     [✅/🔄/⬜]  /agent-system-prompt
+第2步 对话     [✅/🔄/⬜]  /agent-dialogue
+第3步 知识库   [✅/🔄/⬜]  /agent-kb
+第4步 打磨     [✅/🔄/⬜]  /agent-polish
+━━━━━━━━━━━━━━━━━━━━━━
+第5步 升级能力 [✅/🔄/⬜]  /agent-upgrade  （有第零部分B 才显示此步）
 ━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -33,6 +35,7 @@ description: Agent 构建主入口。显示进度，路由到对应 sub-skill。
 - 第二部分存在 → 对话 ✅
 - `knowledge-base/` 有文件 → 知识库 ✅
 - 打磨日志区块存在 → 打磨 ✅
+- 第零部分B 存在 → 升级能力 ✅（如 agent 已发布且有第零部分B）
 
 ## 路由规则
 
@@ -43,6 +46,7 @@ description: Agent 构建主入口。显示进度，路由到对应 sub-skill。
 | 写对话步骤 | `agent-dialogue` |
 | 建知识库 | `agent-kb` |
 | 打磨 / 优化 | `agent-polish` |
+| 升级能力 / 加语音 / 加文件 / 加记忆 / 升级已有 agent | `agent-upgrade` |
 | 继续上次 | 根据进度面板路由到第一个未完成步骤 |
 
 ## Agent 名称确认
